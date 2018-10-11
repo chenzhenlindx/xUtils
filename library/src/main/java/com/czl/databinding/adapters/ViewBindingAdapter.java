@@ -1,14 +1,17 @@
 package com.czl.databinding.adapters;
 
-import android.annotation.SuppressLint;
 import android.databinding.BindingAdapter;
+import android.databinding.BindingMethod;
+import android.databinding.BindingMethods;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.jakewharton.rxbinding2.view.RxView;
 
 import java.util.concurrent.TimeUnit;
-
+@BindingMethods({
+        @BindingMethod(type = android.widget.LinearLayout.class, attribute = "android:minHeight", method = "setMinimumHeight")
+})
 public class ViewBindingAdapter {
     private static final int WINDOW_DURATION = 2;
 

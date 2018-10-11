@@ -20,13 +20,16 @@ public class ImageViewBindingAdapter {
      * @param view
      * @param base64Code
      */
-    @BindingAdapter("base64Code")
-    public static void setBase64Code(final ImageView view, final String base64Code) {
+    @BindingAdapter(value = {"base64Code", "error"}, requireAll = false)
+    public static void setBase64Code(final ImageView view, final String base64Code, final Drawable errorDrawable) {
         if (!TextUtils.isEmpty(base64Code)) {
             Bitmap b = Base64Bitmap.base64toBitmap(base64Code);
             if (null != b) {
                 view.setImageBitmap(b);
             }
+        }
+        if (null != errorDrawable) {
+            view.setImageDrawable(errorDrawable);
         }
     }
 
@@ -41,7 +44,6 @@ public class ImageViewBindingAdapter {
         if (!TextUtils.isEmpty(base64Code)) {
             Bitmap b = Base64Bitmap.base64toBitmap(base64Code);
             if (null != b) {
-                view.setImageBitmap(b);
                 Glide.with(view)
                         .load(b)
                         .apply(RequestOptions.circleCropTransform())
@@ -60,10 +62,14 @@ public class ImageViewBindingAdapter {
      * @param resId         资源Id
      * @param errorDrawable
      */
-    @BindingAdapter(value = {"imageUrl", "baseUrl", "filePath", "resId", "error"}, requireAll = false)
+    @BindingAdapter(value = {"imageUrl", "baseUrl", "filePath", "resId", "placeholder", "error"}, requireAll = false)
     public static void setImage(final ImageView view, String imageUrl, final String baseUrl,
-                                final String filePath, final Integer resId, final Drawable errorDrawable) {
+                                final String filePath, final Integer resId,
+                                final Drawable placeholderDrawable, final Drawable errorDrawable) {
         RequestOptions options = RequestOptions.centerCropTransform();
+        if (null != placeholderDrawable) {
+            options.placeholder(placeholderDrawable);
+        }
         if (null != errorDrawable) {
             options.error(errorDrawable);
         }
