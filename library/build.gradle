@@ -22,15 +22,22 @@ android {
     dataBinding {
         enabled = true
     }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    api 'com.android.support:appcompat-v7:28.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    api 'com.android.support:appcompat-v7:28.0.0'
+    api 'com.android.support:recyclerview-v7:28.0.0'
+    api 'com.android.support.constraint:constraint-layout:1.1.3'
+    api 'com.android.support:support-v4:28.0.0'
 
     //Rxjava
     //https://github.com/ReactiveX/RxAndroid
@@ -39,6 +46,8 @@ dependencies {
     api "io.reactivex.rxjava2:rxjava:2.1.16"
     //https://github.com/JakeWharton/RxBinding
     api 'com.jakewharton.rxbinding2:rxbinding:2.1.1'
+    //https://github.com/tbruyelle/RxPermissions
+    api 'com.github.tbruyelle:rxpermissions:0.10.2'
     //事件总线
     //https://github.com/greenrobot/EventBus
     api "org.greenrobot:eventbus:3.1.1"
