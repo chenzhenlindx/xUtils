@@ -53,4 +53,17 @@ public class ViewBindingAdapter {
         params.height = height;
         view.setLayoutParams(params);
     }
+    /**
+     * 用于编辑和查看状态切换
+     *
+     * @param view
+     * @param marginRight
+     */
+    @BindingAdapter("layout_marginRight")
+    public static void setLayoutMarginRight(View view, float marginRight) {
+        ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
+        layoutParams.setMargins(layoutParams.leftMargin, layoutParams.topMargin,
+                (int) marginRight, layoutParams.bottomMargin);
+        view.setLayoutParams(layoutParams);
+    }
 }
