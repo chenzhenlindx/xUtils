@@ -45,7 +45,9 @@ dependencies {
     //https://github.com/ReactiveX/RxJava
     api "io.reactivex.rxjava2:rxjava:2.1.16"
     //https://github.com/JakeWharton/RxBinding
-    api 'com.jakewharton.rxbinding2:rxbinding:2.1.1'
+    api ('com.jakewharton.rxbinding2:rxbinding:2.1.1'){
+        exclude group: 'com.android.support'
+    }
     //https://github.com/tbruyelle/RxPermissions
     api 'com.github.tbruyelle:rxpermissions:0.10.2'
     //事件总线
