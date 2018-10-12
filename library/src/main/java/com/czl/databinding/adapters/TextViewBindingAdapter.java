@@ -1,6 +1,6 @@
 package com.czl.databinding.adapters;
 
-import android.databinding.BindingAdapter;
+import androidx.databinding.BindingAdapter;
 import android.text.TextUtils;
 import android.widget.TextView;
 
