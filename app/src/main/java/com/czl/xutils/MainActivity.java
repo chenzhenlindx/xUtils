@@ -10,9 +10,11 @@ import android.os.Bundle;
 import com.blankj.utilcode.util.ToastUtils;
 import com.blankj.utilcode.util.Utils;
 import com.czl.xutils.databinding.ActivityMainBinding;
+import com.czl.xutils.model.NetRsp;
 
 public class MainActivity extends AppCompatActivity {
     public MutableLiveData<String> name = new MutableLiveData<>();
+    public MutableLiveData<String> name1 = new MutableLiveData<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +29,7 @@ public class MainActivity extends AppCompatActivity {
         String n = name.getValue();
         ToastUtils.showLong(n);
         name.setValue("OK");
-        ApiManager.getToday().observe(this, today -> {
-            name.setValue(today.getCategory().get(0));
-        });
+        ApiManager.getToday().observe(this, today -> name.setValue(today.getCategory().get(0)));
+        ApiManager.getAndroids(10, 1).observe(this, netRsp -> name1.setValue(netRsp.getResults().get(0).getDesc()));
     }
 }

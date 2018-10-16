@@ -1,5 +1,7 @@
 package com.czl.xutils;
 
+import com.czl.xutils.model.NetRsp;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import retrofit2.Call;
@@ -7,6 +9,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Path;
 
 public class ApiManager {
     private final static Api mApi;
@@ -23,11 +26,11 @@ public class ApiManager {
     }
 
     public static LiveData<Today> getToday() {
-        MutableLiveData<Today> todayLiveData = new MutableLiveData<>();
+        MutableLiveData<Today> liveData = new MutableLiveData<>();
         mApi.get().enqueue(new Callback<Today>() {
             @Override
             public void onResponse(Call<Today> call, Response<Today> response) {
-                todayLiveData.setValue(response.body());
+                liveData.setValue(response.body());
             }
 
             @Override
@@ -35,6 +38,22 @@ public class ApiManager {
 
             }
         });
-        return todayLiveData;
+        return liveData;
+    }
+
+    public static LiveData<NetRsp> getAndroids(int pageSize, int pageNum) {
+        MutableLiveData<NetRsp> liveData = new MutableLiveData<>();
+        mApi.getAndroids(pageSize, pageNum).enqueue(new Callback<NetRsp>() {
+            @Override
+            public void onResponse(Call<NetRsp> call, Response<NetRsp> response) {
+                liveData.setValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<NetRsp> call, Throwable t) {
+
+            }
+        });
+        return liveData;
     }
 }

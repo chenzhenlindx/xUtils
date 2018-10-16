@@ -26,18 +26,21 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
             android:inputType="textPersonName"
             android:text="@={handler.name}" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@={handler.name1}" />
 
         <Button
             android:id="@+id/button"
             android:layout_width="match_parent"
-            android:onClick="@{()->handler.onClick()}"
             android:layout_height="wrap_content"
+            android:onClick="@{()->handler.onClick()}"
             android:text="Button" />
 
     </LinearLayout>
