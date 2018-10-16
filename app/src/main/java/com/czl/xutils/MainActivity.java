@@ -3,6 +3,7 @@ package com.czl.xutils;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 
 import android.os.Bundle;
 
@@ -26,5 +27,8 @@ public class MainActivity extends AppCompatActivity {
         String n = name.getValue();
         ToastUtils.showLong(n);
         name.setValue("OK");
+        ApiManager.getToday().observe(this, today -> {
+            name.setValue(today.getCategory().get(0));
+        });
     }
 }
