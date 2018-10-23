@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
         @BindingMethod(type = android.widget.LinearLayout.class, attribute = "android:minHeight", method = "setMinimumHeight")
 })
 public class ViewBindingAdapter {
-    private static final int WINDOW_DURATION = 2;
+    public static final int WINDOW_DURATION = 2;
 
     /**
      * 点击事件去抖动绑定
