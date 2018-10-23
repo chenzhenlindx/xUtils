@@ -43,5 +43,11 @@
             android:onClick="@{()->handler.onClick()}"
             android:text="Button" />
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->handler.androidList()}"
+            android:text="AndroidList" />
+
     </LinearLayout>
 </layout>

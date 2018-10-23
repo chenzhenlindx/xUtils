@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer;
 
 import android.os.Bundle;
 
+import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.blankj.utilcode.util.Utils;
 import com.czl.xutils.databinding.ActivityMainBinding;
@@ -31,5 +32,9 @@ public class MainActivity extends AppCompatActivity {
         name.setValue("OK");
         ApiManager.getToday().observe(this, today -> name.setValue(today.getCategory().get(0)));
         ApiManager.getAndroids(10, 1).observe(this, netRsp -> name1.setValue(netRsp.getResults().get(0).getDesc()));
+    }
+
+    public void androidList() {
+        ActivityUtils.startActivity(AndroidListActivity.class);
     }
 }
