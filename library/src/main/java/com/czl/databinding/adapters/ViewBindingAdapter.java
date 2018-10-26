@@ -1,14 +1,16 @@
 package com.czl.databinding.adapters;
 
-import androidx.databinding.BindingAdapter;
-import androidx.databinding.BindingMethod;
-import androidx.databinding.BindingMethods;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.jakewharton.rxbinding2.view.RxView;
 
 import java.util.concurrent.TimeUnit;
+
+import androidx.databinding.BindingAdapter;
+import androidx.databinding.BindingMethod;
+import androidx.databinding.BindingMethods;
+
 @BindingMethods({
         @BindingMethod(type = android.widget.LinearLayout.class, attribute = "android:minHeight", method = "setMinimumHeight")
 })
@@ -53,17 +55,22 @@ public class ViewBindingAdapter {
         params.height = height;
         view.setLayoutParams(params);
     }
-    /**
-     * 用于编辑和查看状态切换
-     *
-     * @param view
-     * @param marginRight
-     */
-    @BindingAdapter("layout_marginRight")
-    public static void setLayoutMarginRight(View view, float marginRight) {
+
+    @BindingAdapter(value = {"android:layout_marginLeft", "android:layout_marginTop", "android:layout_marginRight", "android:layout_marginBottom"}, requireAll = false)
+    public static void setLayoutMargin(View view, Float leftMargin, Float topMargin, Float rightMargin, Float bottomMargin) {
         ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
-        layoutParams.setMargins(layoutParams.leftMargin, layoutParams.topMargin,
-                (int) marginRight, layoutParams.bottomMargin);
+        if (null != leftMargin) {
+            layoutParams.leftMargin = leftMargin.intValue();
+        }
+        if (null != topMargin) {
+            layoutParams.topMargin = topMargin.intValue();
+        }
+        if (null != rightMargin) {
+            layoutParams.rightMargin = rightMargin.intValue();
+        }
+        if (null != bottomMargin) {
+            layoutParams.bottomMargin = bottomMargin.intValue();
+        }
         view.setLayoutParams(layoutParams);
     }
 }
