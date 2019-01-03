@@ -72,7 +72,7 @@ public class ImageViewBindingAdapter {
     public static void setImage(final ImageView view, String imageUrl, final String baseUrl,
                                 final String filePath, final Integer resId,
                                 final Drawable placeholderDrawable, final Drawable errorDrawable) {
-        RequestOptions options = RequestOptions.centerCropTransform();
+        RequestOptions options = new RequestOptions();
         if (null != placeholderDrawable) {
             options.placeholder(placeholderDrawable);
         }
