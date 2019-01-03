@@ -32,6 +32,7 @@ public class ImageViewBindingAdapter {
             Bitmap b = Base64Bitmap.base64toBitmap(base64Code);
             if (null != b) {
                 view.setImageBitmap(b);
+                return;
             }
         }
         if (null != errorDrawable) {
